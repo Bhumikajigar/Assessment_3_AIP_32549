@@ -7,7 +7,7 @@
 
 module.exports = {
 
-  'new':function(req, res)
+  'index':function(req, res)
   {
     res.view();
   },
@@ -24,7 +24,7 @@ module.exports = {
         }
 
         // If error redirect back to sign-up page
-        return res.redirect('/User/new');
+        return res.redirect('/User/index');
       }
 
       // Log user in
@@ -33,18 +33,18 @@ module.exports = {
 
       // Change status to online
       User.online = true;
-       res.redirect('/User/show/' + user.id);
+       res.redirect('/User/ViewRecord/' + user.id);
       
     });
 
   },
 
-  'show': function(req, res, next){
+  'ViewRecord': function(req, res, next){
     User.find(function foundUser(err, users){
       if (err) return next(err);
       if (!users) return next();
 
-      //res.json(user);
+      res.json(user);
 
       res.view({ 
         users: users
@@ -55,7 +55,7 @@ module.exports = {
     });
   },
 
-  'viewrec': function(req, res, next){
+  'ViewRecord': function(req, res, next){
     User.findOne(req.param('id'), function foundUser(err, user){
       if (err) return next(err);
       if (!user) return next();
@@ -69,11 +69,19 @@ module.exports = {
       // sails.log('Wow, there are %d users named Finn.  Check it out:', user.length, user);
  
     });
+   /* User.find()
+        .exec(function(err,users){
+          if(err){
+            return res.json(err);
+          }
+          return res.json(users);
+          
+        })*/
   },
 
-  'deleterec': function(req, res, next){
+  'DeleteRecord': function(req, res, next){
 
-    User.destroy(req.param('cid')).exec(function (err){
+    User.destroy(req.param('id')).exec(function (err){
           if (err) {
             return res.negotiate(err);
             }

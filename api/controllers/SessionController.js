@@ -9,7 +9,7 @@ var bcrypt = require('bcrypt');
 
 module.exports = {
 
-	'new': function(req, res) {
+	'index': function(req, res) {
 		res.view('session/new');
 	},
 
@@ -76,8 +76,8 @@ module.exports = {
 				req.session.User = user;
 
 				// Change status to online
-				user.online = true;
-				user.save(function(err, user) {
+				User.online = true;
+				//User.save(function(err, user) {
 					if (err) return next(err);
 
 					// Inform other sockets (e.g. connected sockets that are subscribed) that this user is now logged in
@@ -91,13 +91,13 @@ module.exports = {
 					// If the user is also an admin redirect to the user list (e.g. /views/user/index.ejs)
 					// This is used in conjunction with config/policies.js file
 					if (req.session.User.admin) {
-						res.redirect('/user');
+						res.redirect('/User');
 						return;
 					}
 
 					//Redirect to their profile page (e.g. /views/user/show.ejs)
-					res.redirect('/user/show/' + user.id);
-				});
+					res.redirect('/User/ViewRecord/' + user.id);
+				//});
 			});
 		});
 	},

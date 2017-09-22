@@ -9,10 +9,12 @@
 module.exports = {
 
   schema: true,
+  autoCreatedAt:false,
+  autoUpdatedAt:false,
 
   attributes: {
   	
-  	name: {
+  	userName: {
   		type: 'string',
   		required: true
   	},

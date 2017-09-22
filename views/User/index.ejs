@@ -1,44 +1,28 @@
-<div class="container">
-	<h3>User Administration</h3>
-	<table class='table'>
-		<tr>
-			<th></th>
-			<th>ID</th>
-			<th>Name</th>
-			<th>Title</th>
-			<th>Email</th>
-			<th></th>
-			<th></th>
-			<th></th>
-		</tr>
-		
+<form action="/User/create" method="GET" style="margin-top: 8%; margin-left: 30%;margin-right: 30%;border: 1px solid green;padding: 15px;" id="sign-up-form" class="form-signin">
+	<h2 class="form-signin-heading" style="margin-top:0px">Create an account</h2>
 
-		<% _.each(users, function(user) { %>
-		<tr data-id="<%= user.id %>" data-model="user">
-			<% if (user.online) { %>
-				<td><img src="/images/icon-online.png"></td>
-			<% } else { %>
-				<td> <img src="/images/icon-offline.png"></td>
-			<% } %>
-			<td><%= user.id %></td>
-			<td><%= user.name %></td>
-			<td><%= user.title %></td>
-			<td><%= user.email %></td>
-			<% if (user.admin) { %>
-				<td> <img src="/images/admin.png"></td>
-			<% } else { %>
-				<td> <img src="/images/pawn.png"></td>
-			<% } %>	
-			<td><a href="/user/show/<%= user.id %>" class="btn btn-sm btn-primary">Show</a></td>
-			<td><a href="/user/edit/<%= user.id %>" class="btn btn-sm btn-warning">Edit</a></td>
 
-			<td><form action="/user/destroy/<%= user.id %>" method="POST">
-				<input type="hidden" name="_method" value="delete"/>
-				<input type="submit" class="btn btn-sm btn-danger" value="Delete"/>
-				<input type="hidden" name="_csrf" value="<%= _csrf %>" />
-			</form></td>
-		</tr> 
+	<div class="control-group">
+	<input type="text" class="form-control" placeholder="your name" name="userName">
+	</div>
 
-		<% }) %>
-	</table>
-</div>
+	<div class="control-group">
+	<input type="text" class="form-control" placeholder="your title" name="title">
+	</div>
+	
+	<div class="control-group">
+	<input type="text" class="form-control" placeholder="email address" name="email">
+	</div>
+
+	<div class="control-group">
+	<input type="password" class="form-control" placeholder="password" name="password" id="password">
+	</div>
+
+	<div class="control-group">
+	<input type="password" class="form-control" placeholder="password confirmation" name="confirmation">
+	<br />
+	</div>
+
+	<input type="submit" class="btn btn-lg btn-primary btn-block" value="Create Account"/>
+	<input type="hidden" name="_csrf" value="<%= _csrf %>" />
+</form>
