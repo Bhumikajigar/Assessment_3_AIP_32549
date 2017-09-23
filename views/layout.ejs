@@ -50,20 +50,20 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <% if (session.authenticated) { %>
-              <li class="active"><a href="/user/ViewRecord/<%= session.User.id %>"><%= session.User.name %> </a> </li>
+              <li class="active"><a href="/User/ViewRecord/<%= session.User.id %>"><%= session.User.userName %> </a> </li>
             <% } %>
             <% if (session.authenticated && session.User.admin) { %>
-            <li><a href="/user">User Administration</a></li>
+            <li><a href="/User">User Administration</a></li>
             <li><a href="#">Placeholder2</a></li>
             <% } %>
           </ul>
           <div class="navbar-right">
             <% if (session.authenticated) { %>
-              <a class="btn btn-default navbar-btn navbar-right" href="/session/destroy">sign-out</a>
+              <a class="btn btn-default navbar-btn navbar-right" href="/Session/destroy">sign-out</a>
             <% } %>
           </div>
           <% if (!session.authenticated) { %>
-            <form class="navbar-form navbar-right" action="/session/create">
+            <form class="navbar-form navbar-right" action="/User/LoginSuccess" method="GET">
             <div class="form-group">
               <input type="text" placeholder="Email" name="email" class="form-control">
             </div>

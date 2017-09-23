@@ -9,8 +9,8 @@ var bcrypt = require('bcrypt');
 
 module.exports = {
 
-	'index': function(req, res) {
-		res.view('session/new');
+	'new': function(req, res) {
+		res.view('Session/new');
 	},
 
 	create: function(req, res, next) {
@@ -31,7 +31,7 @@ module.exports = {
 				err: usernamePasswordRequiredError
 			}
 
-			res.redirect('/session/new');
+			res.redirect('/Session/new');
 			return;
 		}
 
@@ -50,7 +50,7 @@ module.exports = {
 				req.session.flash = {
 					err: noAccountError
 				}
-				res.redirect('/session/new');
+				res.redirect('/Session/new');
 				return;
 			}
 
@@ -67,7 +67,7 @@ module.exports = {
 					req.session.flash = {
 						err: usernamePasswordMismatchError
 					}
-					res.redirect('/session/new');
+					res.redirect('/Session/new');
 					return;
 				}
 
@@ -104,9 +104,9 @@ module.exports = {
 
 	destroy: function(req, res, next) {
 
-		User.findOne(req.session.User.id, function foundUser(err, user) {
+		User.findOne(req.param('id'), function foundUser(err, user) {
 
-			var userId = req.session.User.id;
+			var userId = req.param('id');
 
 			if (user) {
 				// The user is "logging out" (e.g. destroying the session) so change the online attribute to false.
@@ -127,7 +127,7 @@ module.exports = {
 					req.session.destroy();
 
 					// Redirect the browser to the sign-in screen
-					res.redirect('/session/new');
+					res.redirect('/Session/new');
 				});
 			} else {
 
@@ -135,7 +135,7 @@ module.exports = {
 				req.session.destroy();
 
 				// Redirect the browser to the sign-in screen
-				res.redirect('/session/new');
+				res.redirect('/Session/new');
 			}
 		});
 	}

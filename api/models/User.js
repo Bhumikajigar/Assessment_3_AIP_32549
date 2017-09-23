@@ -8,7 +8,7 @@
 
 module.exports = {
 
-  schema: true,
+  //schema: true,
   autoCreatedAt:false,
   autoUpdatedAt:false,
 
@@ -34,6 +34,10 @@ module.exports = {
   		type: 'string'
   	},
 
+    confirmation: {
+      type: 'string'
+    },
+
     online: {
       type: 'boolean',
       defaultsTo: false
@@ -42,16 +46,16 @@ module.exports = {
     admin: {
       type: 'boolean',
       defaultsTo: false
-    }
+    },
 
-    /*toJSON: function() {
+    toJSON: function() {
       var obj = this.toObject();
       delete obj.password;
       delete obj.confirmation;
       delete obj.encryptedPassword;
       delete obj._csrf;
       return obj;
-    }*/
+    }
 
   },
 
