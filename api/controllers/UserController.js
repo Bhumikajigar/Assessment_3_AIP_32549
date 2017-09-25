@@ -132,7 +132,7 @@ module.exports = {
           if (err) return next(err);
 
           // Inform other sockets (e.g. connected sockets that are subscribed) that this user is now logged in
-          User.publishUpdate(user.id, {
+          User.publishUpdate(user.id, { 
             loggedIn: true,
             id: user.id,
             name: user.userName,
