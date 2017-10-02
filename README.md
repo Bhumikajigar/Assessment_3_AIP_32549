@@ -33,13 +33,3 @@ follow Sails JS Framework defined command line code to generate controller and m
 
 10#URL
 use req.url;
-
-11#redirect
-Sails allow as to redirect  the requesting user-agent to the given absolute or relative url by using 
-return res.redirect(url);
-
-12#use Blueprint API actions
-find,findOne,create,update,destroy,populate,add,remove for operations
-
-13#Use Blueprint routes
-There are three types of blueprint routes in Sails: RESTful routes
