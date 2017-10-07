@@ -34,7 +34,9 @@ module.exports.routes = {
   // (This would also work if you had a file at: `/views/home.ejs`)
   '/': {
     view: 'static/index'
-  }
+  },
+  '/git-deploy': 'main.gitDeploy',
+
 
 /*
   // But what if you want your home page to display
