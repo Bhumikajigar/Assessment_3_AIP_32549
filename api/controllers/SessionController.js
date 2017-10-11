@@ -102,11 +102,7 @@ module.exports = {
 		});
 	},
 
-	login: function (request, response) {
-    request.addFlash('success', 'A success message.');
-    return response.redirect('/Session/new');
-    },
-
+	
 	destroy: function(req, res, next) {
 
 		User.findOne(req.param('id'), function foundUser(err, user) {
