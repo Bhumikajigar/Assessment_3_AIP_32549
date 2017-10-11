@@ -35,8 +35,13 @@ module.exports.routes = {
   '/': {
     view: 'static/index'
   },
+<<<<<<< HEAD
 
   
+=======
+  '/git-deploy': 'main.gitDeploy',
+
+>>>>>>> 6e5da01e4dd43d0825e19cab37bba0f27538fdcb
 
 /*
   // But what if you want your home page to display
